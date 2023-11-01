@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { collection, updateDoc, doc } from "firebase/firestore";
+import { db } from "../services/firebase.config";
+const collectionRef = collection(db, "todo");
 
-const EditTodo = () => {
+const EditTodo = ({ todo, id }) => {
+	const [todos, setTodos] = useState([todo]);
+
+	const updateTodo = async (e) => {
+		e.preventDefault();
+		try {
+			const todoDocument = doc(db, "todo", id);
+			await updateDoc(todoDocument, {
+				todo: todos,
+			});
+			window.location.reload();
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<>
 			<button
 				type='button'
 				className='btn btn-primary'
 				data-bs-toggle='modal'
-				data-bs-target='#exampleModal'>
+				data-bs-target={`#id${id}`}>
 				Edit Todo
 			</button>
-
 			<div
 				className='modal fade'
-				id='exampleModal'
+				id={`id${id}`}
 				tabIndex='-1'
 				aria-labelledby='editLabel'
 				aria-hidden='true'>
@@ -31,7 +48,12 @@ const EditTodo = () => {
 						</div>
 						<div className='modal-body'>
 							<form className='d-flex'>
-								<input type='text' className='form-control' />
+								<input
+									onChange={(e) => setTodos(e.target.value)}
+									type='text'
+									defaultValue={todo}
+									className='form-control'
+								/>
 							</form>
 						</div>
 						<div className='modal-footer'>
@@ -41,7 +63,10 @@ const EditTodo = () => {
 								data-bs-dismiss='modal'>
 								Close
 							</button>
-							<button type='button' className='btn btn-primary'>
+							<button
+								type='button'
+								onClick={(e) => updateTodo(e)}
+								className='btn btn-primary'>
 								Update Todo
 							</button>
 						</div>
