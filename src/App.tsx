@@ -9,13 +9,12 @@ import HomePage from './pages/HomePage'
 import SignUpPage from './pages/SignUpPage'
 import SignInPage from './pages/SignInPage'
 import DashboardPage from './pages/DashboardPage'
+import TodoListPage from './pages/TodoListPage'
 
 
 import "./App.css";
 
 function App() {
-	// const [count, setCount] = useState(0)
-  const [user, setUser] = useState(null)
 
 	return (
     <Router>     
@@ -25,7 +24,8 @@ function App() {
                 <Route path="/" element={<HomePage />}/>
                 <Route path="/signup" element={<SignUpPage />}/>
                 <Route path="/signin" element={<SignInPage />}/>
-                <Route path="/dashboard" element={<DashboardPage user={user} />}/>
+                <Route path="/dashboard" element={<DashboardPage />}/>
+                <Route path="/todolist" element={<TodoListPage />}/>
                 <Route path="*" element={<p>404!</p>}/>
             </Routes>
         </AuthProvider>

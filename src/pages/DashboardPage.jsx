@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../services/firebase.config";
 import { signOut } from "firebase/auth";
 import { useAuth } from "../AuthContext";
