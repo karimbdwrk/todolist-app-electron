@@ -33,7 +33,6 @@ const SignUpForm = () => {
 			<section>
 				<div>
 					<div>
-						<h1> FocusApp </h1>
 						<form>
 							<div>
 								<label htmlFor='email-address'>

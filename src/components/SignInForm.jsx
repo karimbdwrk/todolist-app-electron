@@ -29,8 +29,6 @@ const SignInForm = () => {
 			<main>
 				<section>
 					<div>
-						<p> FocusApp </p>
-
 						<form>
 							<div>
 								<label htmlFor='email-address'>
