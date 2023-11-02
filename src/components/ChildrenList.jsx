@@ -3,6 +3,8 @@ import { collection } from "@firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../services/firebase.config";
 
+import AddNew from "../components/AddNew";
+
 const ChildrenList = ({ path }) => {
 	const query = collection(db, path);
 
@@ -10,11 +12,16 @@ const ChildrenList = ({ path }) => {
 	console.log(docs);
 
 	return (
-		<ul>
-			{docs?.map((doc) => (
-				<li key={Math.random()}>{doc.todo}</li>
-			))}
-		</ul>
+		<>
+			{loading && "loading ..."}
+			<ul>
+				{docs?.map((doc) => (
+					<li key={Math.random()}>{doc.todo}</li>
+				))}
+
+				<AddNew path={path} />
+			</ul>
+		</>
 	);
 };
 

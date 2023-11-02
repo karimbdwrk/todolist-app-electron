@@ -4,6 +4,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../services/firebase.config";
 
 import ChildrenList from "../components/ChildrenList";
+import AddNew from "../components/AddNew";
 
 const TodoLists = () => {
 	const query = collection(db, "todolist");
@@ -23,6 +24,7 @@ const TodoLists = () => {
 						<ChildrenList path={`todolist/${doc.name}/todos`} />
 					</div>
 				))}
+				<AddNew path='todolist' />
 			</ul>
 		</>
 	);
