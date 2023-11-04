@@ -5,6 +5,7 @@ import SocialCards from "./components/SocialCards/SocialCards";
 import { getToken } from "./helpers";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
+import TodoLists from "./pages/TodoLists";
 
 const AppRoutes = () => {
 	return (
@@ -15,6 +16,10 @@ const AppRoutes = () => {
 			<Route
 				path='/profile'
 				element={getToken() ? <Profile /> : <Navigate to='/signin' />}
+			/>
+			<Route
+				path='/todolists'
+				element={getToken() ? <TodoLists /> : <Navigate to='/signin' />}
 			/>
 		</Routes>
 	);

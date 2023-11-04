@@ -1,7 +1,7 @@
 import { Button, Space } from "antd";
 import React from "react";
 import { CgWebsite } from "react-icons/cg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { removeToken } from "../../helpers";
 
@@ -22,6 +22,7 @@ const AppHeader = () => {
 			<Space className='auth_buttons'>
 				{user ? (
 					<>
+						<Link to='/todolists'>Todolists</Link>
 						<Button
 							className='auth_button_login'
 							href='/profile'
